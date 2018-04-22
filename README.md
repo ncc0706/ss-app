@@ -1,6 +1,21 @@
 # shadowsocks-over-websocket
 基于 [shadowsocks](https://zh.wikipedia.org/zh-cn/Shadowsocks) 协议的翻墙工具 , 可部署在 [Heroku](https://www.heroku.com/) 平台上 , 实现免费科学上网
 
+## 定时访问应用
+
+30分钟内没有收到流量，app就会进入down状态，所有再次访问的时候会有些慢
+
+```bash
+crontab -e
+# 每分钟执行一次脚本
+*/5 *  *  *  * /usr/bin/1.sh
+
+#!/bin/bash
+curl -w "\n" "https://niuyuxian-ss.herokuapp.com/" >> /tmp/c.log
+```
+
+
+
 
 ## 如何部署在 Heroku 平台上
 
